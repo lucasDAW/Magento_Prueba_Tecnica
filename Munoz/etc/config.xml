@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/system_file.xsd">
+    <default>
+        <hiberus_munoz_students>
+            <settings>
+                <enable_update>0</enable_update> <!-- Valor predeterminado: desactivado -->
+            </settings>
+        </hiberus_munoz_students>
+    </default>
+</config>

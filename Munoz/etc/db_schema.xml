@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!-- Base de datos -->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="hiberus_munoz_student" resource="default" engine="innodb" comment="prueba">
+        <column xsi:type="int" name="id_exam" padding="11"  nullable="false" identity="true" comment="ID"/>
+        <column xsi:type="varchar" name="firstname"  length="100"  nullable="false"  comment="nombre"/>
+        <column xsi:type="varchar" name="lastname" length="250"  nullable="false"  comment="apellido"/>
+        <column xsi:type="decimal" name="mark" precision="4" scale="2"  nullable="false"  comment="nota"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id_exam"/>
+        </constraint>
+
+        <constraint xsi:type="unique" referenceId="KEY_Student">
+            <column name="firstname"/>
+            <column name="lastname"/>
+        </constraint>
+    </table>
+    
+</schema>

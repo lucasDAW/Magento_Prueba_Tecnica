@@ -1,0 +1,44 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <!-- Commands -->
+	<type name="Magento\Framework\Console\CommandList">
+		<arguments>
+			<argument name="commands" xsi:type="array">
+				<item name="hiberus" xsi:type="object">Hiberus\Munoz\Console\Command\ListExam</item>
+			</argument>
+		</arguments>
+	</type>
+    <!-- Plugin -->
+    <type name="\Hiberus\Munoz\Model\Exam">
+        <plugin name="hiberus_munoz" type="Hiberus\Munoz\Plugin\MyPlugin"/>
+    </type>
+
+    <!-- admin section -->
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="hiberus_munoz_student_listing_data_source" xsi:type="string">
+                HiberusMunozStudentDataProvider
+                </item>
+            </argument>
+        </arguments>
+    </type>
+    <!-- Registrar el DataProvider -->
+    <virtualType name="HiberusMunozStudentDataProvider"
+                 type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">hiberus_munoz_student</argument>
+            <argument name="resourceModel" xsi:type="string">
+                Hiberus\Munoz\Model\ResourceModel\Exam
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <!-- Preference interface - service contract -->
+	<preference for="Hiberus\Munoz\Api\ExamRepositoryInterface" type="Hiberus\Munoz\Model\ExamRepository"/>
+    <preference for="Hiberus\Munoz\Api\ExamManagementInterface" type="Hiberus\Munoz\Model\ExamManagement"/>
+    <preference for="Hiberus\Munoz\Api\ExamManagementRestInterface" type="Hiberus\Munoz\Model\ExamManagementRest"/>
+	<preference for="Hiberus\Munoz\Api\Data\ExamInterface" type="Hiberus\Munoz\Model\Exam"/>
+    <preference for="Hiberus\Munoz\Api\Data\ExamSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+</config>

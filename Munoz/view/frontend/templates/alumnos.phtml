@@ -1,0 +1,16 @@
+<h1>Listado de Alumnos y Calificaciones</h1>
+<table border="1" cellspacing="0" cellpadding="5">
+    <tr>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Calificación</th>
+    </tr>
+
+    <?php foreach ($block->getAlumnos() as $alumno): ?>
+        <tr>
+            <td><?= $escaper->escapeHtml($alumno->getFirstname()); ?></td>
+            <td><?= $escaper->escapeHtml($alumno->getLastname()); ?></td>
+            <td><?= $escaper->escapeHtml($alumno->getMark()); ?></td>
+        </tr>
+    <?php endforeach; ?>
+</table>

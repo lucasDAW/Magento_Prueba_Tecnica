@@ -1,0 +1,51 @@
+<?xml version="1.0" ?>
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+    <route url="/V1/hiberus-munoz/exam" method="GET">
+        <service class="Hiberus\Munoz\Api\ExamManagementRestInterface" method="getListExam"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <route url="/V1/hiberus-munoz/exam" method="DELETE">
+        <service class="Hiberus\Munoz\Api\ExamManagementRestInterface" method="deleteExam"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <route url="/V1/hiberus-munoz/exam" method="PUT">
+        <service class="Hiberus\Munoz\Api\ExamManagementRestInterface" method="putExam"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <route url="/V1/hiberus-munoz/exam/test" method="GET">
+        <service class="Hiberus\Munoz\Api\ExamManagementRestInterface" method="getMessageTest"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <route url="/V1/hiberus-munoz/exam/newstudent" method="POST">
+        <service class="Hiberus\Munoz\Api\ExamManagementRestInterface" method="saveStudent"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <route url="/V1/hiberus-munoz/exam/showstudent/:id" method="GET">
+        <service class="Hiberus\Munoz\Api\ExamManagementRestInterface" method="showStudent"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <route url="/V1/hiberus-munoz/exam/modifystudent/:id" method="PUT">
+        <service class="Hiberus\Munoz\Api\ExamManagementRestInterface" method="updateStudent"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <route url="/V1/hiberus-munoz/exam/deletestudent/:id" method="DELETE">
+        <service class="Hiberus\Munoz\Api\ExamManagementRestInterface" method="deleteStudent"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+</routes>

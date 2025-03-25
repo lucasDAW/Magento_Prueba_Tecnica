@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">
+                hiberus_munoz_student_listing.hiberus_munoz_student_listing_data_source
+            </item>
+            <item name="deps" xsi:type="string">
+                hiberus_munoz_student_listing.hiberus_munoz_student_listing_data_source
+            </item>
+        </item>
+        <item name="spinner" xsi:type="string">hiberus_munoz_student_listing_columns</item>
+    </argument>
+    <dataSource name="hiberus_munoz_student_listing_data_source" component="Magento_Ui/js/grid/provider">
+        <settings>
+            <storageConfig>
+                <param name="indexField" xsi:type="string">id_exam</param>
+            </storageConfig>
+            <updateUrl path="mui/index/render"/>
+        </settings>
+        <aclResource>Hiberus_Munoz::alumnos_exam</aclResource>
+        <dataProvider class="Hiberus\Munoz\Ui\Component\DataProvider\Exam" name="hiberus_munoz_student_listing_data_source">
+            <settings>
+                <requestFieldName>id_exam</requestFieldName>
+                <primaryFieldName>id_exam</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <listingToolbar name="listing_top">
+        <settings>
+            <sticky>true</sticky>
+        </settings>
+        <bookmark name="bookmarks"/>
+        <columnsControls name="columns_controls"/>
+        <paging name="listing_paging"/>
+    </listingToolbar>
+     <filters name="exam_columns_listing_filters">
+        <filterSelect name="firstname">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Nombre</label>
+            </settings>
+        </filterSelect>
+        <filterSelect name="lastname">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Apellido</label>
+            </settings>
+        </filterSelect>
+    </filters>
+    <columns name="hiberus_munoz_student_listing_columns">
+        <column name="id_exam">
+            <settings>
+                <sorting>asc</sorting>
+                <label translate="true">ID</label>  <!-- Label de la columna -->
+            </settings>
+        </column>
+        <column name="firstname">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">FirstName</label>
+            </settings>
+        </column>
+        <column name="lastname">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">LastName</label>
+            </settings>
+        </column>
+        <column name="mark">
+            <settings>
+                <label translate="true">Mark</label>
+            </settings>
+        </column>
+    </columns>
+   
+</listing>

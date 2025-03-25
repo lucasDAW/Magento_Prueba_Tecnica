@@ -1,0 +1,81 @@
+<?php
+/** @var \Hiberus\Munoz\Block\StudentList $block */
+$students = $block->getStudents();
+$average = $block->getAverageMark();
+
+
+?>
+
+<h1>Student List</h1>
+
+<?php if (!empty($students)): ?>
+     <!-- Button -->
+    <button id="toggle-marks">Show/Hide Marks</button>
+    <button id="show-highest-mark">High Mark</button>
+    <table>
+        <thead>
+            <tr>
+                <th>Firtname</th>
+                <th>LastName</th>
+                <th>Mark</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($students as $student): ?>
+                
+                <tr>
+                    <td><?= $student->getFirstname(); ?></td>
+                    <td><?= $student->getLastname(); ?></td>
+                    <td><?= number_format($student->getMark(), 2); ?></td>
+                </tr>
+            <?php endforeach; ?>
+        
+        </tbody>
+    </table>
+<?php else: ?>
+    <p>No hay alumnos registrados.</p>
+<?php endif; ?>
+
+<h2>Calificación Media</h2>
+<p><?= number_format($average,2);?></p>
+
+<script >
+   
+   let buttonShow = document.getElementById('toggle-marks');
+   buttonShow.addEventListener('click',function(){
+        let visi= document.querySelector('table tbody').style.visibility;
+            if(visi=='hidden'){
+                document.querySelector('table tbody').style.visibility='visible';
+            }else{
+                document.querySelector('table tbody').style.visibility='hidden';
+
+            }
+   });
+
+   let highMarkbutton = document.getElementById('show-highest-mark');
+
+   let marks=document.querySelectorAll('table tbody tr td:nth-child(3)');
+   let markfloat =[];
+   for(let i=0;i<marks.length;i++){
+    markfloat.push(parseFloat(marks[i].innerText));
+   }
+    highMarkbutton.addEventListener('click', function(){
+    let highmark = 0.0;
+    let pos=0;
+    
+    for(j=0;j<markfloat.length;j++){
+        if(highmark<=markfloat[j]){
+            highmark=markfloat[j];
+            pos=j;
+        }
+
+
+    }
+
+    document.querySelector('table tbody tr:nth-child('+(pos+1)+')').style.background='black';
+    document.querySelector('table tbody tr:nth-child('+(pos+1)+')').style.color='white';
+
+    alert('High Mark: '+highmark+' ('+pos+')');
+
+   });
+</script>

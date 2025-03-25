@@ -1,0 +1,59 @@
+<?php
+
+
+/**
+ * @var \Hiberus\Munoz\Block\Index $block
+ */
+$exams = $block->getExams();
+// $test = $block->test();
+?>
+<div class="exam-box" data-mage-init='{"Hiberus_Munoz/js/script":{"var":1}}'>
+   
+    <h2 class="exam-title">Exam list</h2>
+    <ul id="exam-list" >
+        <?php $sumMark = 0.0; ?>
+        <?php foreach ($exams as $exam) : ?>
+        <?php /** @var \Hiberus\Munoz\Api\Data\ExamInterface $exam */ ?>
+        <?php
+            $sumMark += $exam->getMark();
+            $success = $exam->getMark()>=5;
+        ?>
+        <li class="test <?= $success ? 'passed' : 'failed'?>" data-entity-id="<?= $exam->getIdExam(); ?>">
+            <?= $exam->getFirstname(); ?>, <?= $exam->getLastname(); ?><span class="mark">:
+                <span class="decimal"><?= number_format($exam->getMark(),2); ?></span>
+            </span>
+        </li>
+        <?php endforeach; ?>
+        <hr />
+        <li><?= __("Average");?>: <?= $sumMark/count($exams); ?></li>
+    </ul>
+    <table>
+        <thead>
+            <tr>
+                <th>Firtname</th>
+                <th>LastName</th>
+                <th>Mark</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php 
+                $sumTotalMark=0.0;
+            foreach ($exams as $student): 
+                $sumTotalMark+=$student->getMark();
+            ?>
+                <tr class='<?= $student->getMark()>=5 ? 'ok' : 'fail' ?>'>
+                    <td><?= $student->getFirstname(); ?></td>
+                    <td><?= $student->getLastname(); ?></td>
+                    <td><?= number_format($student->getMark(), 2); ?></td>
+                </tr>
+            <?php endforeach; ?>
+        
+        </tbody>
+    </table>
+    <h3><?= __("Average");?>: <?= $sumTotalMark/count($exams); ?></h3>
+    <div class="actions">
+        <button id="show_mark"><?= __("Show/Hide marks"); ?></button><br />
+        <button id="highest_mark"><?= __("Highest mark"); ?></button>
+    </div>
+</div>
+

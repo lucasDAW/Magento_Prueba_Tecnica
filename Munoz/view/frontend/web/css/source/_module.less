@@ -1,0 +1,62 @@
+// Estilos generales del listado de alumnos
+table{
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    text-align: left;
+    background-color: rgb(155, 177, 171);
+}
+table th,table td {
+        padding: 10px;
+        border: 1px solid #ddd;
+}
+
+table thead th {
+        background-color: #0073aa;
+        color: white;
+        text-align: left;
+}
+
+table tbody tr:nth-child(odd) {
+        background-color: #f2f2f2;
+}
+
+table tbody tr:nth-child(even) {
+        background-color: #bdca6f;
+}
+
+table tbody .fail td{
+        background: #930303;
+        color: white;
+}
+
+// Estilos de los botones
+button{
+    margin-bottom: 15px;
+    background-color: #0073aa;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    margin-right: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+
+    
+}
+button:hover{
+        background-color: #005f8b;
+    
+}
+
+@media (max-width: 500px) {
+    table {
+        text-align: center;
+
+        th, td {
+            text-align: center;
+        }
+    }
+}
+
